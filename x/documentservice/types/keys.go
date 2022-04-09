@@ -15,6 +15,12 @@ const (
 
 	// MemStoreKey defines the in-memory store key
 	MemStoreKey = "mem_documentservice"
+
+	ContractKey      = "Contract-value-"
+	ContractCountKey = "Contract-count-"
+
+	SupplementKey      = "Supplement-value-"
+	SupplementCountKey = "Supplement-count-"
 )
 
 func KeyPrefix(p string) []byte {

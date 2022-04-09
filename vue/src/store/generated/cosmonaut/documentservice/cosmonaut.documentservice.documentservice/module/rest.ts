@@ -9,6 +9,12 @@
  * ---------------------------------------------------------------
  */
 
+export interface DocumentserviceMsgCreateContractResponse {
+  /** @format uint64 */
+  id?: string;
+  createDate?: string;
+}
+
 /**
  * Params defines the parameters for the module.
  */
@@ -225,7 +231,7 @@ export class HttpClient<SecurityDataType = unknown> {
 }
 
 /**
- * @title documentservice/genesis.proto
+ * @title documentservice/contract.proto
  * @version version not set
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {

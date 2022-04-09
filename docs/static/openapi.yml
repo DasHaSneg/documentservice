@@ -27716,6 +27716,14 @@ paths:
       tags:
         - Query
 definitions:
+  cosmonaut.documentservice.documentservice.MsgCreateContractResponse:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
+      createDate:
+        type: string
   cosmonaut.documentservice.documentservice.Params:
     type: object
     description: Params defines the parameters for the module.
