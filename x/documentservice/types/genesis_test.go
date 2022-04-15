@@ -31,6 +31,15 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 				},
 				ContractCount: 2,
+				AnnexList: []types.Annex{
+					{
+						Id: 0,
+					},
+					{
+						Id: 1,
+					},
+				},
+				AnnexCount: 2,
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -58,6 +67,32 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 				},
 				ContractCount: 0,
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated annex",
+			genState: &types.GenesisState{
+				AnnexList: []types.Annex{
+					{
+						Id: 0,
+					},
+					{
+						Id: 0,
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "invalid annex count",
+			genState: &types.GenesisState{
+				AnnexList: []types.Annex{
+					{
+						Id: 1,
+					},
+				},
+				AnnexCount: 0,
 			},
 			valid: false,
 		},

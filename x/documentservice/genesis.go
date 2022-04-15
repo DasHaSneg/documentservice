@@ -16,6 +16,13 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 
 	// Set contract count
 	k.SetContractCount(ctx, genState.ContractCount)
+	// Set all the annex
+	for _, elem := range genState.AnnexList {
+		k.SetAnnex(ctx, elem)
+	}
+
+	// Set annex count
+	k.SetAnnexCount(ctx, genState.AnnexCount)
 	// this line is used by starport scaffolding # genesis/module/init
 	k.SetParams(ctx, genState.Params)
 }
@@ -27,6 +34,8 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 
 	genesis.ContractList = k.GetAllContract(ctx)
 	genesis.ContractCount = k.GetContractCount(ctx)
+	genesis.AnnexList = k.GetAllAnnex(ctx)
+	genesis.AnnexCount = k.GetAnnexCount(ctx)
 	// this line is used by starport scaffolding # genesis/module/export
 
 	return genesis

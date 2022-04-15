@@ -11,6 +11,7 @@ const DefaultIndex uint64 = 1
 func DefaultGenesis() *GenesisState {
 	return &GenesisState{
 		ContractList: []Contract{},
+		AnnexList:    []Annex{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
@@ -30,6 +31,18 @@ func (gs GenesisState) Validate() error {
 			return fmt.Errorf("contract id should be lower or equal than the last id")
 		}
 		contractIdMap[elem.Id] = true
+	}
+	// Check for duplicated ID in annex
+	annexIdMap := make(map[uint64]bool)
+	annexCount := gs.GetAnnexCount()
+	for _, elem := range gs.AnnexList {
+		if _, ok := annexIdMap[elem.Id]; ok {
+			return fmt.Errorf("duplicated id for annex")
+		}
+		if elem.Id >= annexCount {
+			return fmt.Errorf("annex id should be lower or equal than the last id")
+		}
+		annexIdMap[elem.Id] = true
 	}
 	// this line is used by starport scaffolding # genesis/types/validate
 

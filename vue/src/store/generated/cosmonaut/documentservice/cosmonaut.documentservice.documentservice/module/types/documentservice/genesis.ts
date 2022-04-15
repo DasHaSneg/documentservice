@@ -3,6 +3,7 @@ import * as Long from "long";
 import { util, configure, Writer, Reader } from "protobufjs/minimal";
 import { Params } from "../documentservice/params";
 import { Contract } from "../documentservice/contract";
+import { Annex } from "../documentservice/annex";
 
 export const protobufPackage = "cosmonaut.documentservice.documentservice";
 
@@ -10,11 +11,13 @@ export const protobufPackage = "cosmonaut.documentservice.documentservice";
 export interface GenesisState {
   params: Params | undefined;
   contractList: Contract[];
-  /** this line is used by starport scaffolding # genesis/proto/state */
   contractCount: number;
+  annexList: Annex[];
+  /** this line is used by starport scaffolding # genesis/proto/state */
+  annexCount: number;
 }
 
-const baseGenesisState: object = { contractCount: 0 };
+const baseGenesisState: object = { contractCount: 0, annexCount: 0 };
 
 export const GenesisState = {
   encode(message: GenesisState, writer: Writer = Writer.create()): Writer {
@@ -27,6 +30,12 @@ export const GenesisState = {
     if (message.contractCount !== 0) {
       writer.uint32(24).uint64(message.contractCount);
     }
+    for (const v of message.annexList) {
+      Annex.encode(v!, writer.uint32(34).fork()).ldelim();
+    }
+    if (message.annexCount !== 0) {
+      writer.uint32(40).uint64(message.annexCount);
+    }
     return writer;
   },
 
@@ -35,6 +44,7 @@ export const GenesisState = {
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGenesisState } as GenesisState;
     message.contractList = [];
+    message.annexList = [];
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -47,6 +57,12 @@ export const GenesisState = {
         case 3:
           message.contractCount = longToNumber(reader.uint64() as Long);
           break;
+        case 4:
+          message.annexList.push(Annex.decode(reader, reader.uint32()));
+          break;
+        case 5:
+          message.annexCount = longToNumber(reader.uint64() as Long);
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -58,6 +74,7 @@ export const GenesisState = {
   fromJSON(object: any): GenesisState {
     const message = { ...baseGenesisState } as GenesisState;
     message.contractList = [];
+    message.annexList = [];
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromJSON(object.params);
     } else {
@@ -72,6 +89,16 @@ export const GenesisState = {
       message.contractCount = Number(object.contractCount);
     } else {
       message.contractCount = 0;
+    }
+    if (object.annexList !== undefined && object.annexList !== null) {
+      for (const e of object.annexList) {
+        message.annexList.push(Annex.fromJSON(e));
+      }
+    }
+    if (object.annexCount !== undefined && object.annexCount !== null) {
+      message.annexCount = Number(object.annexCount);
+    } else {
+      message.annexCount = 0;
     }
     return message;
   },
@@ -89,12 +116,21 @@ export const GenesisState = {
     }
     message.contractCount !== undefined &&
       (obj.contractCount = message.contractCount);
+    if (message.annexList) {
+      obj.annexList = message.annexList.map((e) =>
+        e ? Annex.toJSON(e) : undefined
+      );
+    } else {
+      obj.annexList = [];
+    }
+    message.annexCount !== undefined && (obj.annexCount = message.annexCount);
     return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = { ...baseGenesisState } as GenesisState;
     message.contractList = [];
+    message.annexList = [];
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromPartial(object.params);
     } else {
@@ -109,6 +145,16 @@ export const GenesisState = {
       message.contractCount = object.contractCount;
     } else {
       message.contractCount = 0;
+    }
+    if (object.annexList !== undefined && object.annexList !== null) {
+      for (const e of object.annexList) {
+        message.annexList.push(Annex.fromPartial(e));
+      }
+    }
+    if (object.annexCount !== undefined && object.annexCount !== null) {
+      message.annexCount = object.annexCount;
+    } else {
+      message.annexCount = 0;
     }
     return message;
   },

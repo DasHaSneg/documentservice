@@ -6,6 +6,7 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "documentservice/params.proto";
 import "documentservice/contract.proto";
+import "documentservice/annex.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/cosmonaut/documentservice/x/documentservice/types";
@@ -24,6 +25,16 @@ service Query {
 	// Queries a list of Contract items.
 	rpc ContractAll(QueryAllContractRequest) returns (QueryAllContractResponse) {
 		option (google.api.http).get = "/cosmonaut/documentservice/documentservice/contract";
+	}
+
+// Queries a Annex by id.
+	rpc Annex(QueryGetAnnexRequest) returns (QueryGetAnnexResponse) {
+		option (google.api.http).get = "/cosmonaut/documentservice/documentservice/annex/{id}";
+	}
+
+	// Queries a list of Annex items.
+	rpc AnnexAll(QueryAllAnnexRequest) returns (QueryAllAnnexResponse) {
+		option (google.api.http).get = "/cosmonaut/documentservice/documentservice/annex";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -52,6 +63,23 @@ message QueryAllContractRequest {
 
 message QueryAllContractResponse {
 	repeated Contract Contract = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetAnnexRequest {
+	uint64 id = 1;
+}
+
+message QueryGetAnnexResponse {
+	Annex Annex = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllAnnexRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllAnnexResponse {
+	repeated Annex Annex = 1 [(gogoproto.nullable) = false];
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 

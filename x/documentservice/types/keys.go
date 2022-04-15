@@ -25,3 +25,8 @@ const (
 	ContractKey      = "Contract-value-"
 	ContractCountKey = "Contract-count-"
 )
+
+const (
+	AnnexKey      = "Annex-value-"
+	AnnexCountKey = "Annex-count-"
+)

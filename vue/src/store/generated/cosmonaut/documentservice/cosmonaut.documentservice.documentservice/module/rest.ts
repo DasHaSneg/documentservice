@@ -9,7 +9,22 @@
  * ---------------------------------------------------------------
  */
 
+export interface DocumentserviceAnnex {
+  creator?: string;
+
+  /** @format uint64 */
+  id?: string;
+  annexHash?: string;
+  contractId?: string;
+  state?: string;
+  seller?: string;
+  buyer?: string;
+  createDate?: string;
+}
+
 export interface DocumentserviceContract {
+  creator?: string;
+
   /** @format uint64 */
   id?: string;
   contractHash?: string;
@@ -30,6 +45,21 @@ export interface DocumentserviceMsgCreateContractResponse {
  */
 export type DocumentserviceParams = object;
 
+export interface DocumentserviceQueryAllAnnexResponse {
+  Annex?: DocumentserviceAnnex[];
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
+}
+
 export interface DocumentserviceQueryAllContractResponse {
   Contract?: DocumentserviceContract[];
 
@@ -43,6 +73,10 @@ export interface DocumentserviceQueryAllContractResponse {
    *  }
    */
   pagination?: V1Beta1PageResponse;
+}
+
+export interface DocumentserviceQueryGetAnnexResponse {
+  Annex?: DocumentserviceAnnex;
 }
 
 export interface DocumentserviceQueryGetContractResponse {
@@ -323,10 +357,52 @@ export class HttpClient<SecurityDataType = unknown> {
 }
 
 /**
- * @title documentservice/contract.proto
+ * @title documentservice/annex.proto
  * @version version not set
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryAnnexAll
+   * @summary Queries a list of Annex items.
+   * @request GET:/cosmonaut/documentservice/documentservice/annex
+   */
+  queryAnnexAll = (
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+      "pagination.reverse"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<DocumentserviceQueryAllAnnexResponse, RpcStatus>({
+      path: `/cosmonaut/documentservice/documentservice/annex`,
+      method: "GET",
+      query: query,
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryAnnex
+   * @summary Queries a Annex by id.
+   * @request GET:/cosmonaut/documentservice/documentservice/annex/{id}
+   */
+  queryAnnex = (id: string, params: RequestParams = {}) =>
+    this.request<DocumentserviceQueryGetAnnexResponse, RpcStatus>({
+      path: `/cosmonaut/documentservice/documentservice/annex/${id}`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
   /**
    * No description
    *

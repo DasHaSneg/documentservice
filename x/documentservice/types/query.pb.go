@@ -297,6 +297,190 @@ func (m *QueryAllContractResponse) GetPagination() *query.PageResponse {
 	return nil
 }
 
+type QueryGetAnnexRequest struct {
+	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (m *QueryGetAnnexRequest) Reset()         { *m = QueryGetAnnexRequest{} }
+func (m *QueryGetAnnexRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetAnnexRequest) ProtoMessage()    {}
+func (*QueryGetAnnexRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d5592e72c8a4a615, []int{6}
+}
+func (m *QueryGetAnnexRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetAnnexRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetAnnexRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetAnnexRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetAnnexRequest.Merge(m, src)
+}
+func (m *QueryGetAnnexRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetAnnexRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetAnnexRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetAnnexRequest proto.InternalMessageInfo
+
+func (m *QueryGetAnnexRequest) GetId() uint64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type QueryGetAnnexResponse struct {
+	Annex Annex `protobuf:"bytes,1,opt,name=Annex,proto3" json:"Annex"`
+}
+
+func (m *QueryGetAnnexResponse) Reset()         { *m = QueryGetAnnexResponse{} }
+func (m *QueryGetAnnexResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetAnnexResponse) ProtoMessage()    {}
+func (*QueryGetAnnexResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d5592e72c8a4a615, []int{7}
+}
+func (m *QueryGetAnnexResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetAnnexResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetAnnexResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetAnnexResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetAnnexResponse.Merge(m, src)
+}
+func (m *QueryGetAnnexResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetAnnexResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetAnnexResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetAnnexResponse proto.InternalMessageInfo
+
+func (m *QueryGetAnnexResponse) GetAnnex() Annex {
+	if m != nil {
+		return m.Annex
+	}
+	return Annex{}
+}
+
+type QueryAllAnnexRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllAnnexRequest) Reset()         { *m = QueryAllAnnexRequest{} }
+func (m *QueryAllAnnexRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllAnnexRequest) ProtoMessage()    {}
+func (*QueryAllAnnexRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d5592e72c8a4a615, []int{8}
+}
+func (m *QueryAllAnnexRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllAnnexRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllAnnexRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllAnnexRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllAnnexRequest.Merge(m, src)
+}
+func (m *QueryAllAnnexRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllAnnexRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllAnnexRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllAnnexRequest proto.InternalMessageInfo
+
+func (m *QueryAllAnnexRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllAnnexResponse struct {
+	Annex      []Annex             `protobuf:"bytes,1,rep,name=Annex,proto3" json:"Annex"`
+	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllAnnexResponse) Reset()         { *m = QueryAllAnnexResponse{} }
+func (m *QueryAllAnnexResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllAnnexResponse) ProtoMessage()    {}
+func (*QueryAllAnnexResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d5592e72c8a4a615, []int{9}
+}
+func (m *QueryAllAnnexResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllAnnexResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllAnnexResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllAnnexResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllAnnexResponse.Merge(m, src)
+}
+func (m *QueryAllAnnexResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllAnnexResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllAnnexResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllAnnexResponse proto.InternalMessageInfo
+
+func (m *QueryAllAnnexResponse) GetAnnex() []Annex {
+	if m != nil {
+		return m.Annex
+	}
+	return nil
+}
+
+func (m *QueryAllAnnexResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "cosmonaut.documentservice.documentservice.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "cosmonaut.documentservice.documentservice.QueryParamsResponse")
@@ -304,44 +488,56 @@ func init() {
 	proto.RegisterType((*QueryGetContractResponse)(nil), "cosmonaut.documentservice.documentservice.QueryGetContractResponse")
 	proto.RegisterType((*QueryAllContractRequest)(nil), "cosmonaut.documentservice.documentservice.QueryAllContractRequest")
 	proto.RegisterType((*QueryAllContractResponse)(nil), "cosmonaut.documentservice.documentservice.QueryAllContractResponse")
+	proto.RegisterType((*QueryGetAnnexRequest)(nil), "cosmonaut.documentservice.documentservice.QueryGetAnnexRequest")
+	proto.RegisterType((*QueryGetAnnexResponse)(nil), "cosmonaut.documentservice.documentservice.QueryGetAnnexResponse")
+	proto.RegisterType((*QueryAllAnnexRequest)(nil), "cosmonaut.documentservice.documentservice.QueryAllAnnexRequest")
+	proto.RegisterType((*QueryAllAnnexResponse)(nil), "cosmonaut.documentservice.documentservice.QueryAllAnnexResponse")
 }
 
 func init() { proto.RegisterFile("documentservice/query.proto", fileDescriptor_d5592e72c8a4a615) }
 
 var fileDescriptor_d5592e72c8a4a615 = []byte{
-	// 503 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x94, 0x4f, 0x6b, 0x14, 0x31,
-	0x18, 0xc6, 0x37, 0xeb, 0xba, 0x48, 0x0a, 0x1e, 0x62, 0xc1, 0xb2, 0xca, 0x28, 0x39, 0xa8, 0xf5,
-	0x90, 0xb0, 0x5d, 0x04, 0xff, 0x63, 0xb7, 0x60, 0x8f, 0xd6, 0x05, 0x3d, 0x78, 0xcb, 0xce, 0xc4,
-	0x31, 0x30, 0x93, 0xcc, 0x4e, 0x32, 0xc5, 0x22, 0x5e, 0xfc, 0x04, 0x82, 0xdf, 0xc6, 0xa3, 0xa7,
-	0x1e, 0x0b, 0x45, 0xf0, 0x24, 0xb2, 0xeb, 0xa7, 0xf0, 0x24, 0x9b, 0x64, 0xda, 0xee, 0xcc, 0xa2,
-	0x4e, 0xed, 0x6d, 0x37, 0xc9, 0xfb, 0x3c, 0xbf, 0x27, 0xef, 0x9b, 0x81, 0x57, 0x22, 0x15, 0x16,
-	0x29, 0x97, 0x46, 0xf3, 0x7c, 0x57, 0x84, 0x9c, 0x4e, 0x0a, 0x9e, 0xef, 0x91, 0x2c, 0x57, 0x46,
-	0xa1, 0xf5, 0x50, 0xe9, 0x54, 0x49, 0x56, 0x18, 0x52, 0x39, 0x56, 0xfd, 0xdf, 0x5b, 0x8d, 0x55,
-	0xac, 0x6c, 0x15, 0x9d, 0xff, 0x72, 0x02, 0xbd, 0xab, 0xb1, 0x52, 0x71, 0xc2, 0x29, 0xcb, 0x04,
-	0x65, 0x52, 0x2a, 0xc3, 0x8c, 0x50, 0x52, 0xfb, 0xdd, 0xdb, 0x56, 0x5e, 0xd3, 0x31, 0xd3, 0xde,
-	0x97, 0xee, 0xf6, 0xc7, 0xdc, 0xb0, 0x3e, 0xcd, 0x58, 0x2c, 0xa4, 0x3d, 0x5c, 0x2a, 0x55, 0x39,
-	0x33, 0x96, 0xb3, 0xb4, 0x54, 0x0a, 0xaa, 0xbb, 0xa1, 0x92, 0x26, 0x67, 0xa1, 0x71, 0xfb, 0x78,
-	0x15, 0xa2, 0xe7, 0x73, 0xfd, 0x1d, 0x5b, 0x34, 0xe2, 0x93, 0x82, 0x6b, 0x83, 0x5f, 0xc3, 0x4b,
-	0x0b, 0xab, 0x3a, 0x53, 0x52, 0x73, 0xf4, 0x0c, 0x76, 0x9d, 0xf8, 0x1a, 0xb8, 0x0e, 0x6e, 0xad,
-	0x6c, 0xf4, 0xc9, 0x3f, 0x5f, 0x03, 0x71, 0x52, 0xc3, 0xce, 0xfe, 0xf7, 0x6b, 0xad, 0x91, 0x97,
-	0xc1, 0xeb, 0xf0, 0xb2, 0xf5, 0xd9, 0xe6, 0x66, 0xcb, 0x73, 0x79, 0x04, 0x74, 0x11, 0xb6, 0x45,
-	0x64, 0x7d, 0x3a, 0xa3, 0xb6, 0x88, 0xf0, 0x04, 0xae, 0xd5, 0x8f, 0x7a, 0xae, 0x17, 0xf0, 0x42,
-	0xb9, 0xe6, 0xc9, 0x06, 0x0d, 0xc8, 0xca, 0x52, 0xcf, 0x76, 0x24, 0x85, 0x99, 0xa7, 0xdb, 0x4c,
-	0x92, 0x2a, 0xdd, 0x53, 0x08, 0x8f, 0x1b, 0xe1, 0x3d, 0x6f, 0x38, 0x4f, 0x4d, 0xe6, 0x5d, 0x23,
-	0x6e, 0x5a, 0x7c, 0xd7, 0xc8, 0x0e, 0x8b, 0xb9, 0xaf, 0x1d, 0x9d, 0xa8, 0xc4, 0x9f, 0x81, 0x8f,
-	0xb5, 0xe0, 0xb1, 0x34, 0xd6, 0xb9, 0x33, 0x8a, 0x85, 0xb6, 0x17, 0xd8, 0xdb, 0x96, 0xfd, 0xe6,
-	0x5f, 0xd9, 0x1d, 0xd3, 0x49, 0xf8, 0x8d, 0x5f, 0x1d, 0x78, 0xde, 0xc2, 0xa3, 0x2f, 0x00, 0x76,
-	0x5d, 0x83, 0xd1, 0xa3, 0x06, 0x88, 0xf5, 0xc9, 0xeb, 0x3d, 0x3e, 0x6d, 0xb9, 0xe3, 0xc3, 0xf7,
-	0x3e, 0x1c, 0xfe, 0xfc, 0xd4, 0x1e, 0xa0, 0x3e, 0x3d, 0xd2, 0xa1, 0xd5, 0x27, 0xb0, 0xfc, 0xc1,
-	0xa0, 0xaf, 0xe0, 0xf8, 0xbe, 0xd1, 0xb0, 0x29, 0x47, 0x7d, 0x84, 0x7b, 0x5b, 0xff, 0xa5, 0xe1,
-	0x03, 0x3d, 0xb1, 0x81, 0xee, 0xa3, 0xbb, 0x0d, 0x02, 0x95, 0x6f, 0x9c, 0xbe, 0x13, 0xd1, 0x7b,
-	0x74, 0x08, 0xe0, 0x4a, 0x29, 0xbb, 0x99, 0x24, 0xcd, 0xa3, 0xd5, 0xe7, 0xbf, 0x79, 0xb4, 0x25,
-	0xf3, 0x8d, 0x1f, 0xd8, 0x68, 0x77, 0xd0, 0xe0, 0x14, 0xd1, 0x86, 0x2f, 0xf7, 0xa7, 0x01, 0x38,
-	0x98, 0x06, 0xe0, 0xc7, 0x34, 0x00, 0x1f, 0x67, 0x41, 0xeb, 0x60, 0x16, 0xb4, 0xbe, 0xcd, 0x82,
-	0xd6, 0xab, 0x87, 0xb1, 0x30, 0x6f, 0x8a, 0x31, 0x09, 0x55, 0xfa, 0x07, 0xe1, 0xb7, 0xb5, 0x15,
-	0xb3, 0x97, 0x71, 0x3d, 0xee, 0xda, 0xef, 0xe2, 0xe0, 0x77, 0x00, 0x00, 0x00, 0xff, 0xff, 0x5f,
-	0x69, 0x79, 0x4e, 0xff, 0x05, 0x00, 0x00,
+	// 629 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x96, 0xcf, 0x6b, 0x13, 0x41,
+	0x14, 0xc7, 0x33, 0x69, 0x1b, 0xc2, 0x14, 0x3c, 0x8c, 0x11, 0x4b, 0x94, 0x55, 0xf6, 0x50, 0xad,
+	0x87, 0xdd, 0x26, 0xa1, 0x58, 0x7f, 0xd4, 0x36, 0x29, 0xd8, 0x8b, 0x60, 0x0d, 0xe8, 0xc1, 0x83,
+	0x30, 0xd9, 0x8c, 0xeb, 0xc2, 0x66, 0x67, 0x93, 0x99, 0x94, 0x16, 0xf1, 0xe2, 0x5f, 0x50, 0xf0,
+	0xff, 0xf0, 0x0f, 0xf0, 0xe8, 0xc5, 0x7a, 0x2b, 0x14, 0xc1, 0x93, 0x48, 0xe2, 0x1f, 0x22, 0x99,
+	0x79, 0xdb, 0x34, 0xbb, 0xf1, 0xc7, 0x6e, 0x72, 0x4b, 0x66, 0xe6, 0x7d, 0xdf, 0xf7, 0x33, 0x6f,
+	0xde, 0x4b, 0xf0, 0xb5, 0x36, 0x77, 0xfa, 0x1d, 0x16, 0x48, 0xc1, 0x7a, 0x07, 0x9e, 0xc3, 0xec,
+	0x6e, 0x9f, 0xf5, 0x8e, 0xac, 0xb0, 0xc7, 0x25, 0x27, 0x6b, 0x0e, 0x17, 0x1d, 0x1e, 0xd0, 0xbe,
+	0xb4, 0x62, 0xc7, 0xe2, 0xdf, 0xcb, 0x25, 0x97, 0xbb, 0x5c, 0x45, 0xd9, 0xa3, 0x4f, 0x5a, 0xa0,
+	0x7c, 0xdd, 0xe5, 0xdc, 0xf5, 0x99, 0x4d, 0x43, 0xcf, 0xa6, 0x41, 0xc0, 0x25, 0x95, 0x1e, 0x0f,
+	0x04, 0xec, 0xde, 0x51, 0xf2, 0xc2, 0x6e, 0x51, 0x01, 0x79, 0xed, 0x83, 0x4a, 0x8b, 0x49, 0x5a,
+	0xb1, 0x43, 0xea, 0x7a, 0x81, 0x3a, 0x1c, 0x29, 0xc5, 0x7d, 0x86, 0xb4, 0x47, 0x3b, 0x91, 0x92,
+	0x11, 0xdf, 0x75, 0x78, 0x20, 0x7b, 0xd4, 0x91, 0xb0, 0x9f, 0xa0, 0xa4, 0x41, 0xc0, 0x0e, 0xf5,
+	0xa6, 0x59, 0xc2, 0xe4, 0xd9, 0x28, 0xf9, 0xbe, 0x52, 0x6c, 0xb2, 0x6e, 0x9f, 0x09, 0x69, 0xbe,
+	0xc6, 0x97, 0x27, 0x56, 0x45, 0xc8, 0x03, 0xc1, 0xc8, 0x53, 0x5c, 0xd0, 0x99, 0x57, 0xd0, 0x4d,
+	0x74, 0x7b, 0xb9, 0x5a, 0xb1, 0xfe, 0xfb, 0x8e, 0x2c, 0x2d, 0xd5, 0x58, 0x3c, 0xf9, 0x71, 0x23,
+	0xd7, 0x04, 0x19, 0x73, 0x0d, 0x5f, 0x55, 0x79, 0xf6, 0x98, 0xdc, 0x05, 0xd3, 0x60, 0x81, 0x5c,
+	0xc2, 0x79, 0xaf, 0xad, 0xf2, 0x2c, 0x36, 0xf3, 0x5e, 0xdb, 0xec, 0xe2, 0x95, 0xe4, 0x51, 0xf0,
+	0xf5, 0x1c, 0x17, 0xa3, 0x35, 0x70, 0x56, 0x4b, 0xe1, 0x2c, 0x0a, 0x05, 0x6f, 0xe7, 0x52, 0x26,
+	0x05, 0x77, 0x75, 0xdf, 0x8f, 0xbb, 0x7b, 0x8c, 0xf1, 0xb8, 0x4a, 0x90, 0x73, 0x55, 0xe7, 0x14,
+	0xd6, 0xa8, 0xa4, 0x96, 0x7e, 0x4a, 0x50, 0x52, 0x6b, 0x9f, 0xba, 0x0c, 0x62, 0x9b, 0x17, 0x22,
+	0xcd, 0x4f, 0x08, 0xb0, 0x26, 0x72, 0x4c, 0xc5, 0x5a, 0x98, 0x13, 0x16, 0xd9, 0x9b, 0xf0, 0x9e,
+	0x57, 0xde, 0x6f, 0xfd, 0xd3, 0xbb, 0xf6, 0x34, 0x61, 0x7e, 0x15, 0x97, 0xa2, 0x92, 0xd4, 0x47,
+	0x4f, 0xea, 0x4f, 0xa5, 0x63, 0xf8, 0x4a, 0xec, 0x1c, 0x00, 0x3e, 0xc1, 0x4b, 0x6a, 0x01, 0x2e,
+	0x70, 0x3d, 0x05, 0x9d, 0x8a, 0x03, 0x34, 0x2d, 0x62, 0xbe, 0x02, 0x3b, 0x75, 0xdf, 0x9f, 0xb0,
+	0x33, 0xaf, 0x5a, 0x7d, 0x44, 0xc0, 0x31, 0x4e, 0x90, 0xe4, 0x58, 0x98, 0x99, 0x63, 0x6e, 0xf5,
+	0xa9, 0x1e, 0x17, 0xf1, 0x92, 0x32, 0x4c, 0x3e, 0x23, 0x5c, 0xd0, 0x0d, 0x48, 0xb6, 0x52, 0x98,
+	0x4b, 0x4e, 0x86, 0xf2, 0xa3, 0xac, 0xe1, 0xda, 0x9f, 0x79, 0xef, 0xfd, 0xd9, 0xaf, 0x0f, 0xf9,
+	0x1a, 0xa9, 0xd8, 0xe7, 0x3a, 0x76, 0x7c, 0x3e, 0x4d, 0x9f, 0x76, 0xe4, 0x1b, 0x1a, 0xf7, 0x03,
+	0x69, 0xa4, 0xf5, 0x91, 0x1c, 0x31, 0xe5, 0xdd, 0x99, 0x34, 0x00, 0x68, 0x47, 0x01, 0xdd, 0x27,
+	0x9b, 0x29, 0x80, 0xa2, 0x01, 0x6d, 0xbf, 0xf5, 0xda, 0xef, 0xc8, 0x19, 0xc2, 0xcb, 0x91, 0x6c,
+	0xdd, 0xf7, 0xd3, 0xa3, 0x25, 0xe7, 0x53, 0x7a, 0xb4, 0x29, 0xf3, 0xc7, 0x7c, 0xa0, 0xd0, 0x36,
+	0x48, 0x2d, 0x03, 0x1a, 0xf9, 0x8a, 0xa0, 0x29, 0xc8, 0x76, 0x86, 0x6b, 0xbe, 0xd8, 0xc0, 0xe5,
+	0x9d, 0xec, 0x02, 0x40, 0xb2, 0xa5, 0x48, 0xee, 0x92, 0x8d, 0x14, 0x24, 0xea, 0x57, 0x52, 0x57,
+	0xe8, 0x0b, 0xc2, 0x45, 0x25, 0x38, 0x2a, 0xcf, 0x76, 0x86, 0xab, 0x9d, 0x0d, 0x27, 0x3e, 0x6f,
+	0xcc, 0x4d, 0x85, 0x53, 0x25, 0xeb, 0x69, 0x71, 0x1a, 0x2f, 0x4e, 0x06, 0x06, 0x3a, 0x1d, 0x18,
+	0xe8, 0xe7, 0xc0, 0x40, 0xc7, 0x43, 0x23, 0x77, 0x3a, 0x34, 0x72, 0xdf, 0x87, 0x46, 0xee, 0xe5,
+	0x43, 0xd7, 0x93, 0x6f, 0xfa, 0x2d, 0xcb, 0xe1, 0x9d, 0xbf, 0xa8, 0x1e, 0x26, 0x56, 0xe4, 0x51,
+	0xc8, 0x44, 0xab, 0xa0, 0xfe, 0x4d, 0xd4, 0x7e, 0x07, 0x00, 0x00, 0xff, 0xff, 0x17, 0xce, 0x96,
+	0x44, 0x52, 0x09, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -362,6 +558,10 @@ type QueryClient interface {
 	Contract(ctx context.Context, in *QueryGetContractRequest, opts ...grpc.CallOption) (*QueryGetContractResponse, error)
 	// Queries a list of Contract items.
 	ContractAll(ctx context.Context, in *QueryAllContractRequest, opts ...grpc.CallOption) (*QueryAllContractResponse, error)
+	// Queries a Annex by id.
+	Annex(ctx context.Context, in *QueryGetAnnexRequest, opts ...grpc.CallOption) (*QueryGetAnnexResponse, error)
+	// Queries a list of Annex items.
+	AnnexAll(ctx context.Context, in *QueryAllAnnexRequest, opts ...grpc.CallOption) (*QueryAllAnnexResponse, error)
 }
 
 type queryClient struct {
@@ -399,6 +599,24 @@ func (c *queryClient) ContractAll(ctx context.Context, in *QueryAllContractReque
 	return out, nil
 }
 
+func (c *queryClient) Annex(ctx context.Context, in *QueryGetAnnexRequest, opts ...grpc.CallOption) (*QueryGetAnnexResponse, error) {
+	out := new(QueryGetAnnexResponse)
+	err := c.cc.Invoke(ctx, "/cosmonaut.documentservice.documentservice.Query/Annex", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) AnnexAll(ctx context.Context, in *QueryAllAnnexRequest, opts ...grpc.CallOption) (*QueryAllAnnexResponse, error) {
+	out := new(QueryAllAnnexResponse)
+	err := c.cc.Invoke(ctx, "/cosmonaut.documentservice.documentservice.Query/AnnexAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
@@ -407,6 +625,10 @@ type QueryServer interface {
 	Contract(context.Context, *QueryGetContractRequest) (*QueryGetContractResponse, error)
 	// Queries a list of Contract items.
 	ContractAll(context.Context, *QueryAllContractRequest) (*QueryAllContractResponse, error)
+	// Queries a Annex by id.
+	Annex(context.Context, *QueryGetAnnexRequest) (*QueryGetAnnexResponse, error)
+	// Queries a list of Annex items.
+	AnnexAll(context.Context, *QueryAllAnnexRequest) (*QueryAllAnnexResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -421,6 +643,12 @@ func (*UnimplementedQueryServer) Contract(ctx context.Context, req *QueryGetCont
 }
 func (*UnimplementedQueryServer) ContractAll(ctx context.Context, req *QueryAllContractRequest) (*QueryAllContractResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ContractAll not implemented")
+}
+func (*UnimplementedQueryServer) Annex(ctx context.Context, req *QueryGetAnnexRequest) (*QueryGetAnnexResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Annex not implemented")
+}
+func (*UnimplementedQueryServer) AnnexAll(ctx context.Context, req *QueryAllAnnexRequest) (*QueryAllAnnexResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AnnexAll not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -481,6 +709,42 @@ func _Query_ContractAll_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_Annex_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetAnnexRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Annex(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cosmonaut.documentservice.documentservice.Query/Annex",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Annex(ctx, req.(*QueryGetAnnexRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_AnnexAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllAnnexRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).AnnexAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cosmonaut.documentservice.documentservice.Query/AnnexAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).AnnexAll(ctx, req.(*QueryAllAnnexRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "cosmonaut.documentservice.documentservice.Query",
 	HandlerType: (*QueryServer)(nil),
@@ -496,6 +760,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ContractAll",
 			Handler:    _Query_ContractAll_Handler,
+		},
+		{
+			MethodName: "Annex",
+			Handler:    _Query_Annex_Handler,
+		},
+		{
+			MethodName: "AnnexAll",
+			Handler:    _Query_AnnexAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -703,6 +975,151 @@ func (m *QueryAllContractResponse) MarshalToSizedBuffer(dAtA []byte) (int, error
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetAnnexRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetAnnexRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetAnnexRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Id != 0 {
+		i = encodeVarintQuery(dAtA, i, uint64(m.Id))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetAnnexResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetAnnexResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetAnnexResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.Annex.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllAnnexRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllAnnexRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllAnnexRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllAnnexResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllAnnexResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllAnnexResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Annex) > 0 {
+		for iNdEx := len(m.Annex) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Annex[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -778,6 +1195,61 @@ func (m *QueryAllContractResponse) Size() (n int) {
 	_ = l
 	if len(m.Contract) > 0 {
 		for _, e := range m.Contract {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetAnnexRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Id != 0 {
+		n += 1 + sovQuery(uint64(m.Id))
+	}
+	return n
+}
+
+func (m *QueryGetAnnexResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.Annex.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllAnnexRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllAnnexResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Annex) > 0 {
+		for _, e := range m.Annex {
 			l = e.Size()
 			n += 1 + l + sovQuery(uint64(l))
 		}
@@ -1226,6 +1698,364 @@ func (m *QueryAllContractResponse) Unmarshal(dAtA []byte) error {
 			}
 			m.Contract = append(m.Contract, Contract{})
 			if err := m.Contract[len(m.Contract)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetAnnexRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetAnnexRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetAnnexRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+			}
+			m.Id = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Id |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetAnnexResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetAnnexResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetAnnexResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Annex", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.Annex.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllAnnexRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllAnnexRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllAnnexRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllAnnexResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllAnnexResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllAnnexResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Annex", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Annex = append(m.Annex, Annex{})
+			if err := m.Annex[len(m.Annex)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

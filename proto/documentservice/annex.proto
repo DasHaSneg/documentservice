@@ -3,12 +3,13 @@ package cosmonaut.documentservice.documentservice;
 
 option go_package = "github.com/cosmonaut/documentservice/x/documentservice/types";
 
-message Contract {
+message Annex {
   string creator = 1;
   uint64 id = 2;
-  string contractHash = 3; 
-  string state = 4; 
-  string seller = 5; 
-  string buyer = 6; 
-  string createDate = 7; 
+  string annexHash = 3; 
+  string contractId = 4; 
+  string state = 5; 
+  string seller=6;
+  string buyer=7;
+  string createDate = 8; 
 }
