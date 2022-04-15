@@ -5,52 +5,42 @@ import { util, configure, Writer, Reader } from "protobufjs/minimal";
 export const protobufPackage = "cosmonaut.documentservice.documentservice";
 
 export interface Contract {
-  creator: string;
-  Id: number;
-  contract_hash: string;
+  id: number;
+  contractHash: string;
   state: string;
   seller: string;
   buyer: string;
-  create_date: string;
-  createdAt: number;
+  createDate: string;
 }
 
 const baseContract: object = {
-  creator: "",
-  Id: 0,
-  contract_hash: "",
+  id: 0,
+  contractHash: "",
   state: "",
   seller: "",
   buyer: "",
-  create_date: "",
-  createdAt: 0,
+  createDate: "",
 };
 
 export const Contract = {
   encode(message: Contract, writer: Writer = Writer.create()): Writer {
-    if (message.creator !== "") {
-      writer.uint32(10).string(message.creator);
+    if (message.id !== 0) {
+      writer.uint32(8).uint64(message.id);
     }
-    if (message.Id !== 0) {
-      writer.uint32(16).uint64(message.Id);
-    }
-    if (message.contract_hash !== "") {
-      writer.uint32(26).string(message.contract_hash);
+    if (message.contractHash !== "") {
+      writer.uint32(18).string(message.contractHash);
     }
     if (message.state !== "") {
-      writer.uint32(34).string(message.state);
+      writer.uint32(26).string(message.state);
     }
     if (message.seller !== "") {
-      writer.uint32(42).string(message.seller);
+      writer.uint32(34).string(message.seller);
     }
     if (message.buyer !== "") {
-      writer.uint32(50).string(message.buyer);
+      writer.uint32(42).string(message.buyer);
     }
-    if (message.create_date !== "") {
-      writer.uint32(58).string(message.create_date);
-    }
-    if (message.createdAt !== 0) {
-      writer.uint32(64).int64(message.createdAt);
+    if (message.createDate !== "") {
+      writer.uint32(50).string(message.createDate);
     }
     return writer;
   },
@@ -63,28 +53,22 @@ export const Contract = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.creator = reader.string();
+          message.id = longToNumber(reader.uint64() as Long);
           break;
         case 2:
-          message.Id = longToNumber(reader.uint64() as Long);
+          message.contractHash = reader.string();
           break;
         case 3:
-          message.contract_hash = reader.string();
-          break;
-        case 4:
           message.state = reader.string();
           break;
-        case 5:
+        case 4:
           message.seller = reader.string();
           break;
-        case 6:
+        case 5:
           message.buyer = reader.string();
           break;
-        case 7:
-          message.create_date = reader.string();
-          break;
-        case 8:
-          message.createdAt = longToNumber(reader.int64() as Long);
+        case 6:
+          message.createDate = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -96,20 +80,15 @@ export const Contract = {
 
   fromJSON(object: any): Contract {
     const message = { ...baseContract } as Contract;
-    if (object.creator !== undefined && object.creator !== null) {
-      message.creator = String(object.creator);
+    if (object.id !== undefined && object.id !== null) {
+      message.id = Number(object.id);
     } else {
-      message.creator = "";
+      message.id = 0;
     }
-    if (object.Id !== undefined && object.Id !== null) {
-      message.Id = Number(object.Id);
+    if (object.contractHash !== undefined && object.contractHash !== null) {
+      message.contractHash = String(object.contractHash);
     } else {
-      message.Id = 0;
-    }
-    if (object.contract_hash !== undefined && object.contract_hash !== null) {
-      message.contract_hash = String(object.contract_hash);
-    } else {
-      message.contract_hash = "";
+      message.contractHash = "";
     }
     if (object.state !== undefined && object.state !== null) {
       message.state = String(object.state);
@@ -126,50 +105,37 @@ export const Contract = {
     } else {
       message.buyer = "";
     }
-    if (object.create_date !== undefined && object.create_date !== null) {
-      message.create_date = String(object.create_date);
+    if (object.createDate !== undefined && object.createDate !== null) {
+      message.createDate = String(object.createDate);
     } else {
-      message.create_date = "";
-    }
-    if (object.createdAt !== undefined && object.createdAt !== null) {
-      message.createdAt = Number(object.createdAt);
-    } else {
-      message.createdAt = 0;
+      message.createDate = "";
     }
     return message;
   },
 
   toJSON(message: Contract): unknown {
     const obj: any = {};
-    message.creator !== undefined && (obj.creator = message.creator);
-    message.Id !== undefined && (obj.Id = message.Id);
-    message.contract_hash !== undefined &&
-      (obj.contract_hash = message.contract_hash);
+    message.id !== undefined && (obj.id = message.id);
+    message.contractHash !== undefined &&
+      (obj.contractHash = message.contractHash);
     message.state !== undefined && (obj.state = message.state);
     message.seller !== undefined && (obj.seller = message.seller);
     message.buyer !== undefined && (obj.buyer = message.buyer);
-    message.create_date !== undefined &&
-      (obj.create_date = message.create_date);
-    message.createdAt !== undefined && (obj.createdAt = message.createdAt);
+    message.createDate !== undefined && (obj.createDate = message.createDate);
     return obj;
   },
 
   fromPartial(object: DeepPartial<Contract>): Contract {
     const message = { ...baseContract } as Contract;
-    if (object.creator !== undefined && object.creator !== null) {
-      message.creator = object.creator;
+    if (object.id !== undefined && object.id !== null) {
+      message.id = object.id;
     } else {
-      message.creator = "";
+      message.id = 0;
     }
-    if (object.Id !== undefined && object.Id !== null) {
-      message.Id = object.Id;
+    if (object.contractHash !== undefined && object.contractHash !== null) {
+      message.contractHash = object.contractHash;
     } else {
-      message.Id = 0;
-    }
-    if (object.contract_hash !== undefined && object.contract_hash !== null) {
-      message.contract_hash = object.contract_hash;
-    } else {
-      message.contract_hash = "";
+      message.contractHash = "";
     }
     if (object.state !== undefined && object.state !== null) {
       message.state = object.state;
@@ -186,15 +152,10 @@ export const Contract = {
     } else {
       message.buyer = "";
     }
-    if (object.create_date !== undefined && object.create_date !== null) {
-      message.create_date = object.create_date;
+    if (object.createDate !== undefined && object.createDate !== null) {
+      message.createDate = object.createDate;
     } else {
-      message.create_date = "";
-    }
-    if (object.createdAt !== undefined && object.createdAt !== null) {
-      message.createdAt = object.createdAt;
-    } else {
-      message.createdAt = 0;
+      message.createDate = "";
     }
     return message;
   },

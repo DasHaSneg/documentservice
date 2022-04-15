@@ -3,6 +3,7 @@ package cosmonaut.documentservice.documentservice;
 
 import "gogoproto/gogo.proto";
 import "documentservice/params.proto";
+import "documentservice/contract.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/cosmonaut/documentservice/x/documentservice/types";
@@ -10,5 +11,7 @@ option go_package = "github.com/cosmonaut/documentservice/x/documentservice/type
 // GenesisState defines the documentservice module's genesis state.
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
+  repeated Contract contractList = 2 [(gogoproto.nullable) = false];
+  uint64 contractCount = 3;
   // this line is used by starport scaffolding # genesis/proto/state
 }
