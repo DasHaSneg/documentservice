@@ -36,6 +36,8 @@ export interface DocumentserviceContract {
   createDate?: string;
 }
 
+export type DocumentserviceMsgCompleteContractResponse = object;
+
 export interface DocumentserviceMsgCreateAnnexResponse {
   /** @format uint64 */
   id?: string;

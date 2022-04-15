@@ -28137,6 +28137,8 @@ definitions:
         type: string
       createDate:
         type: string
+  cosmonaut.documentservice.documentservice.MsgCompleteContractResponse:
+    type: object
   cosmonaut.documentservice.documentservice.MsgCreateAnnexResponse:
     type: object
     properties:
