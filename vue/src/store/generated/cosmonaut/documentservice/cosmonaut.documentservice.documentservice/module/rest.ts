@@ -50,6 +50,8 @@ export interface DocumentserviceMsgCreateContractResponse {
 
 export type DocumentserviceMsgSignAnnexResponse = object;
 
+export type DocumentserviceMsgSignContractResponse = object;
+
 /**
  * Params defines the parameters for the module.
  */

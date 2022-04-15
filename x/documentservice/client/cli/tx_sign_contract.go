@@ -13,30 +13,25 @@ import (
 
 var _ = strconv.Itoa(0)
 
-func CmdCreateAnnex() *cobra.Command {
+func CmdSignContract() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-annex [annex-hash] [contract-id] [buyer]",
-		Short: "Broadcast message create-annex",
-		Args:  cobra.ExactArgs(3),
+		Use:   "sign-contract [contract-id]",
+		Short: "Broadcast message sign-contract",
+		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
-			argAnnexHash := args[0]
-			argBuyer := args[2]
+			argContractId, err := cast.ToUint64E(args[0])
+			if err != nil {
+				return err
+			}
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			argContractId, err := cast.ToUint64E(args[1])
-			if err != nil {
-				return err
-			}
-
-			msg := types.NewMsgCreateAnnex(
+			msg := types.NewMsgSignContract(
 				clientCtx.GetFromAddress().String(),
-				argAnnexHash,
 				argContractId,
-				argBuyer,
 			)
 			if err := msg.ValidateBasic(); err != nil {
 				return err

@@ -11,6 +11,7 @@ func RegisterCodec(cdc *codec.LegacyAmino) {
 	cdc.RegisterConcrete(&MsgCreateContract{}, "documentservice/CreateContract", nil)
 	cdc.RegisterConcrete(&MsgCreateAnnex{}, "documentservice/CreateAnnex", nil)
 	cdc.RegisterConcrete(&MsgSignAnnex{}, "documentservice/SignAnnex", nil)
+	cdc.RegisterConcrete(&MsgSignContract{}, "documentservice/SignContract", nil)
 	// this line is used by starport scaffolding # 2
 }
 
@@ -23,6 +24,9 @@ func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	)
 	registry.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgSignAnnex{},
+	)
+	registry.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgSignContract{},
 	)
 	// this line is used by starport scaffolding # 3
 

@@ -10,6 +10,7 @@ service Msg {
       rpc CreateContract(MsgCreateContract) returns (MsgCreateContractResponse);
   rpc CreateAnnex(MsgCreateAnnex) returns (MsgCreateAnnexResponse);
   rpc SignAnnex(MsgSignAnnex) returns (MsgSignAnnexResponse);
+  rpc SignContract(MsgSignContract) returns (MsgSignContractResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -42,6 +43,14 @@ message MsgSignAnnex {
 }
 
 message MsgSignAnnexResponse {
+}
+
+message MsgSignContract {
+  string creator = 1;
+  uint64 contractId = 2;
+}
+
+message MsgSignContractResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
