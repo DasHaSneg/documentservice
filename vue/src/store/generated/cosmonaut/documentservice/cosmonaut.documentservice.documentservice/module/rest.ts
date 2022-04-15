@@ -48,6 +48,8 @@ export interface DocumentserviceMsgCreateContractResponse {
   createDate?: string;
 }
 
+export type DocumentserviceMsgSignAnnexResponse = object;
+
 /**
  * Params defines the parameters for the module.
  */

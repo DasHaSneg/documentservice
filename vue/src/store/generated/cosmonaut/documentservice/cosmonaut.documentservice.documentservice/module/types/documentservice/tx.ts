@@ -27,6 +27,13 @@ export interface MsgCreateAnnexResponse {
   createDate: string;
 }
 
+export interface MsgSignAnnex {
+  creator: string;
+  annexId: number;
+}
+
+export interface MsgSignAnnexResponse {}
+
 const baseMsgCreateContract: object = {
   creator: "",
   contractHash: "",
@@ -395,13 +402,124 @@ export const MsgCreateAnnexResponse = {
   },
 };
 
+const baseMsgSignAnnex: object = { creator: "", annexId: 0 };
+
+export const MsgSignAnnex = {
+  encode(message: MsgSignAnnex, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.annexId !== 0) {
+      writer.uint32(16).uint64(message.annexId);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgSignAnnex {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgSignAnnex } as MsgSignAnnex;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.annexId = longToNumber(reader.uint64() as Long);
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgSignAnnex {
+    const message = { ...baseMsgSignAnnex } as MsgSignAnnex;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.annexId !== undefined && object.annexId !== null) {
+      message.annexId = Number(object.annexId);
+    } else {
+      message.annexId = 0;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgSignAnnex): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.annexId !== undefined && (obj.annexId = message.annexId);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgSignAnnex>): MsgSignAnnex {
+    const message = { ...baseMsgSignAnnex } as MsgSignAnnex;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.annexId !== undefined && object.annexId !== null) {
+      message.annexId = object.annexId;
+    } else {
+      message.annexId = 0;
+    }
+    return message;
+  },
+};
+
+const baseMsgSignAnnexResponse: object = {};
+
+export const MsgSignAnnexResponse = {
+  encode(_: MsgSignAnnexResponse, writer: Writer = Writer.create()): Writer {
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgSignAnnexResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgSignAnnexResponse } as MsgSignAnnexResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgSignAnnexResponse {
+    const message = { ...baseMsgSignAnnexResponse } as MsgSignAnnexResponse;
+    return message;
+  },
+
+  toJSON(_: MsgSignAnnexResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: DeepPartial<MsgSignAnnexResponse>): MsgSignAnnexResponse {
+    const message = { ...baseMsgSignAnnexResponse } as MsgSignAnnexResponse;
+    return message;
+  },
+};
+
 /** Msg defines the Msg service. */
 export interface Msg {
   CreateContract(
     request: MsgCreateContract
   ): Promise<MsgCreateContractResponse>;
-  /** this line is used by starport scaffolding # proto/tx/rpc */
   CreateAnnex(request: MsgCreateAnnex): Promise<MsgCreateAnnexResponse>;
+  /** this line is used by starport scaffolding # proto/tx/rpc */
+  SignAnnex(request: MsgSignAnnex): Promise<MsgSignAnnexResponse>;
 }
 
 export class MsgClientImpl implements Msg {
@@ -432,6 +550,18 @@ export class MsgClientImpl implements Msg {
     );
     return promise.then((data) =>
       MsgCreateAnnexResponse.decode(new Reader(data))
+    );
+  }
+
+  SignAnnex(request: MsgSignAnnex): Promise<MsgSignAnnexResponse> {
+    const data = MsgSignAnnex.encode(request).finish();
+    const promise = this.rpc.request(
+      "cosmonaut.documentservice.documentservice.Msg",
+      "SignAnnex",
+      data
+    );
+    return promise.then((data) =>
+      MsgSignAnnexResponse.decode(new Reader(data))
     );
   }
 }

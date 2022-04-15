@@ -28153,6 +28153,8 @@ definitions:
         format: uint64
       createDate:
         type: string
+  cosmonaut.documentservice.documentservice.MsgSignAnnexResponse:
+    type: object
   cosmonaut.documentservice.documentservice.Params:
     type: object
     description: Params defines the parameters for the module.

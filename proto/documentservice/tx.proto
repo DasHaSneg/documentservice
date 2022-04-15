@@ -9,6 +9,7 @@ option go_package = "github.com/cosmonaut/documentservice/x/documentservice/type
 service Msg {
       rpc CreateContract(MsgCreateContract) returns (MsgCreateContractResponse);
   rpc CreateAnnex(MsgCreateAnnex) returns (MsgCreateAnnexResponse);
+  rpc SignAnnex(MsgSignAnnex) returns (MsgSignAnnexResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -33,6 +34,14 @@ message MsgCreateAnnex {
 message MsgCreateAnnexResponse {
   uint64 id = 1;
   string createDate = 2;
+}
+
+message MsgSignAnnex {
+  string creator = 1;
+  uint64 annexId = 2;
+}
+
+message MsgSignAnnexResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message

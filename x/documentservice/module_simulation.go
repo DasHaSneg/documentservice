@@ -32,6 +32,10 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgCreateAnnex int = 100
 
+	opWeightMsgSignAnnex = "op_weight_msg_create_chain"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgSignAnnex int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -85,6 +89,17 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 	operations = append(operations, simulation.NewWeightedOperation(
 		weightMsgCreateAnnex,
 		documentservicesimulation.SimulateMsgCreateAnnex(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgSignAnnex int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgSignAnnex, &weightMsgSignAnnex, nil,
+		func(_ *rand.Rand) {
+			weightMsgSignAnnex = defaultWeightMsgSignAnnex
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgSignAnnex,
+		documentservicesimulation.SimulateMsgSignAnnex(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
 	// this line is used by starport scaffolding # simapp/module/operation

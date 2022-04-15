@@ -10,4 +10,6 @@ import (
 var (
 	ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
 	ErrID     = sdkerrors.Register(ModuleName, 1200, "")
+	ErrBuyer  = sdkerrors.Register(ModuleName, 1300, "")
+	ErrState  = sdkerrors.Register(ModuleName, 1400, "")
 )
