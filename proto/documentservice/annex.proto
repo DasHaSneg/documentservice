@@ -7,7 +7,7 @@ message Annex {
   string creator = 1;
   uint64 id = 2;
   string annexHash = 3; 
-  string contractId = 4; 
+  uint64 contractId = 4; 
   string state = 5; 
   string seller=6;
   string buyer=7;

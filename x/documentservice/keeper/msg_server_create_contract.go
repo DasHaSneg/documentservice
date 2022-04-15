@@ -15,7 +15,7 @@ func (k msgServer) CreateContract(goCtx context.Context, msg *types.MsgCreateCon
 	var contract = types.Contract{
 		Creator:      msg.Creator,
 		ContractHash: msg.ContractHash,
-		State:        types.PendingSupplementCreation,
+		State:        types.PendingAnnexCreation,
 		Seller:       msg.Creator,
 		Buyer:        msg.Buyer,
 		CreateDate:   strconv.FormatInt(time.Now().Unix(), 10),

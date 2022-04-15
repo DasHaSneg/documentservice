@@ -28,6 +28,7 @@ paths:
                       type: string
                     contractId:
                       type: string
+                      format: uint64
                     state:
                       type: string
                     seller:
@@ -162,6 +163,7 @@ paths:
                     type: string
                   contractId:
                     type: string
+                    format: uint64
                   state:
                     type: string
                   seller:
@@ -28108,6 +28110,7 @@ definitions:
         type: string
       contractId:
         type: string
+        format: uint64
       state:
         type: string
       seller:
@@ -28132,6 +28135,14 @@ definitions:
         type: string
       buyer:
         type: string
+      createDate:
+        type: string
+  cosmonaut.documentservice.documentservice.MsgCreateAnnexResponse:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
       createDate:
         type: string
   cosmonaut.documentservice.documentservice.MsgCreateContractResponse:
@@ -28162,6 +28173,7 @@ definitions:
               type: string
             contractId:
               type: string
+              format: uint64
             state:
               type: string
             seller:
@@ -28258,6 +28270,7 @@ definitions:
             type: string
           contractId:
             type: string
+            format: uint64
           state:
             type: string
           seller:

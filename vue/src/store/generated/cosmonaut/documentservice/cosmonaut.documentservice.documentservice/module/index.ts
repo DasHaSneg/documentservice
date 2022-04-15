@@ -4,10 +4,12 @@ import { StdFee } from "@cosmjs/launchpad";
 import { SigningStargateClient } from "@cosmjs/stargate";
 import { Registry, OfflineSigner, EncodeObject, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { Api } from "./rest";
+import { MsgCreateAnnex } from "./types/documentservice/tx";
 import { MsgCreateContract } from "./types/documentservice/tx";
 
 
 const types = [
+  ["/cosmonaut.documentservice.documentservice.MsgCreateAnnex", MsgCreateAnnex],
   ["/cosmonaut.documentservice.documentservice.MsgCreateContract", MsgCreateContract],
   
 ];
@@ -41,6 +43,7 @@ const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions =
 
   return {
     signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ""}) => client.signAndBroadcast(address, msgs, fee,memo),
+    msgCreateAnnex: (data: MsgCreateAnnex): EncodeObject => ({ typeUrl: "/cosmonaut.documentservice.documentservice.MsgCreateAnnex", value: MsgCreateAnnex.fromPartial( data ) }),
     msgCreateContract: (data: MsgCreateContract): EncodeObject => ({ typeUrl: "/cosmonaut.documentservice.documentservice.MsgCreateContract", value: MsgCreateContract.fromPartial( data ) }),
     
   };

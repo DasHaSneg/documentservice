@@ -15,6 +15,18 @@ export interface MsgCreateContractResponse {
   createDate: string;
 }
 
+export interface MsgCreateAnnex {
+  creator: string;
+  annexHash: string;
+  contractId: number;
+  buyer: string;
+}
+
+export interface MsgCreateAnnexResponse {
+  id: number;
+  createDate: string;
+}
+
 const baseMsgCreateContract: object = {
   creator: "",
   contractHash: "",
@@ -195,12 +207,201 @@ export const MsgCreateContractResponse = {
   },
 };
 
+const baseMsgCreateAnnex: object = {
+  creator: "",
+  annexHash: "",
+  contractId: 0,
+  buyer: "",
+};
+
+export const MsgCreateAnnex = {
+  encode(message: MsgCreateAnnex, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.annexHash !== "") {
+      writer.uint32(18).string(message.annexHash);
+    }
+    if (message.contractId !== 0) {
+      writer.uint32(24).uint64(message.contractId);
+    }
+    if (message.buyer !== "") {
+      writer.uint32(34).string(message.buyer);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgCreateAnnex {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgCreateAnnex } as MsgCreateAnnex;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.annexHash = reader.string();
+          break;
+        case 3:
+          message.contractId = longToNumber(reader.uint64() as Long);
+          break;
+        case 4:
+          message.buyer = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgCreateAnnex {
+    const message = { ...baseMsgCreateAnnex } as MsgCreateAnnex;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.annexHash !== undefined && object.annexHash !== null) {
+      message.annexHash = String(object.annexHash);
+    } else {
+      message.annexHash = "";
+    }
+    if (object.contractId !== undefined && object.contractId !== null) {
+      message.contractId = Number(object.contractId);
+    } else {
+      message.contractId = 0;
+    }
+    if (object.buyer !== undefined && object.buyer !== null) {
+      message.buyer = String(object.buyer);
+    } else {
+      message.buyer = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgCreateAnnex): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.annexHash !== undefined && (obj.annexHash = message.annexHash);
+    message.contractId !== undefined && (obj.contractId = message.contractId);
+    message.buyer !== undefined && (obj.buyer = message.buyer);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgCreateAnnex>): MsgCreateAnnex {
+    const message = { ...baseMsgCreateAnnex } as MsgCreateAnnex;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.annexHash !== undefined && object.annexHash !== null) {
+      message.annexHash = object.annexHash;
+    } else {
+      message.annexHash = "";
+    }
+    if (object.contractId !== undefined && object.contractId !== null) {
+      message.contractId = object.contractId;
+    } else {
+      message.contractId = 0;
+    }
+    if (object.buyer !== undefined && object.buyer !== null) {
+      message.buyer = object.buyer;
+    } else {
+      message.buyer = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgCreateAnnexResponse: object = { id: 0, createDate: "" };
+
+export const MsgCreateAnnexResponse = {
+  encode(
+    message: MsgCreateAnnexResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.id !== 0) {
+      writer.uint32(8).uint64(message.id);
+    }
+    if (message.createDate !== "") {
+      writer.uint32(18).string(message.createDate);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgCreateAnnexResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgCreateAnnexResponse } as MsgCreateAnnexResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.id = longToNumber(reader.uint64() as Long);
+          break;
+        case 2:
+          message.createDate = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgCreateAnnexResponse {
+    const message = { ...baseMsgCreateAnnexResponse } as MsgCreateAnnexResponse;
+    if (object.id !== undefined && object.id !== null) {
+      message.id = Number(object.id);
+    } else {
+      message.id = 0;
+    }
+    if (object.createDate !== undefined && object.createDate !== null) {
+      message.createDate = String(object.createDate);
+    } else {
+      message.createDate = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgCreateAnnexResponse): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.createDate !== undefined && (obj.createDate = message.createDate);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgCreateAnnexResponse>
+  ): MsgCreateAnnexResponse {
+    const message = { ...baseMsgCreateAnnexResponse } as MsgCreateAnnexResponse;
+    if (object.id !== undefined && object.id !== null) {
+      message.id = object.id;
+    } else {
+      message.id = 0;
+    }
+    if (object.createDate !== undefined && object.createDate !== null) {
+      message.createDate = object.createDate;
+    } else {
+      message.createDate = "";
+    }
+    return message;
+  },
+};
+
 /** Msg defines the Msg service. */
 export interface Msg {
-  /** this line is used by starport scaffolding # proto/tx/rpc */
   CreateContract(
     request: MsgCreateContract
   ): Promise<MsgCreateContractResponse>;
+  /** this line is used by starport scaffolding # proto/tx/rpc */
+  CreateAnnex(request: MsgCreateAnnex): Promise<MsgCreateAnnexResponse>;
 }
 
 export class MsgClientImpl implements Msg {
@@ -219,6 +420,18 @@ export class MsgClientImpl implements Msg {
     );
     return promise.then((data) =>
       MsgCreateContractResponse.decode(new Reader(data))
+    );
+  }
+
+  CreateAnnex(request: MsgCreateAnnex): Promise<MsgCreateAnnexResponse> {
+    const data = MsgCreateAnnex.encode(request).finish();
+    const promise = this.rpc.request(
+      "cosmonaut.documentservice.documentservice.Msg",
+      "CreateAnnex",
+      data
+    );
+    return promise.then((data) =>
+      MsgCreateAnnexResponse.decode(new Reader(data))
     );
   }
 }

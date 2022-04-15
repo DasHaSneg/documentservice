@@ -15,6 +15,8 @@ export interface DocumentserviceAnnex {
   /** @format uint64 */
   id?: string;
   annexHash?: string;
+
+  /** @format uint64 */
   contractId?: string;
   state?: string;
   seller?: string;
@@ -31,6 +33,12 @@ export interface DocumentserviceContract {
   state?: string;
   seller?: string;
   buyer?: string;
+  createDate?: string;
+}
+
+export interface DocumentserviceMsgCreateAnnexResponse {
+  /** @format uint64 */
+  id?: string;
   createDate?: string;
 }
 

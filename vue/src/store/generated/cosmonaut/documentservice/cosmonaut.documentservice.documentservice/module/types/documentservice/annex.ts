@@ -8,7 +8,7 @@ export interface Annex {
   creator: string;
   id: number;
   annexHash: string;
-  contractId: string;
+  contractId: number;
   state: string;
   seller: string;
   buyer: string;
@@ -19,7 +19,7 @@ const baseAnnex: object = {
   creator: "",
   id: 0,
   annexHash: "",
-  contractId: "",
+  contractId: 0,
   state: "",
   seller: "",
   buyer: "",
@@ -37,8 +37,8 @@ export const Annex = {
     if (message.annexHash !== "") {
       writer.uint32(26).string(message.annexHash);
     }
-    if (message.contractId !== "") {
-      writer.uint32(34).string(message.contractId);
+    if (message.contractId !== 0) {
+      writer.uint32(32).uint64(message.contractId);
     }
     if (message.state !== "") {
       writer.uint32(42).string(message.state);
@@ -72,7 +72,7 @@ export const Annex = {
           message.annexHash = reader.string();
           break;
         case 4:
-          message.contractId = reader.string();
+          message.contractId = longToNumber(reader.uint64() as Long);
           break;
         case 5:
           message.state = reader.string();
@@ -112,9 +112,9 @@ export const Annex = {
       message.annexHash = "";
     }
     if (object.contractId !== undefined && object.contractId !== null) {
-      message.contractId = String(object.contractId);
+      message.contractId = Number(object.contractId);
     } else {
-      message.contractId = "";
+      message.contractId = 0;
     }
     if (object.state !== undefined && object.state !== null) {
       message.state = String(object.state);
@@ -172,7 +172,7 @@ export const Annex = {
     if (object.contractId !== undefined && object.contractId !== null) {
       message.contractId = object.contractId;
     } else {
-      message.contractId = "";
+      message.contractId = 0;
     }
     if (object.state !== undefined && object.state !== null) {
       message.state = object.state;

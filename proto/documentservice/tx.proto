@@ -8,6 +8,7 @@ option go_package = "github.com/cosmonaut/documentservice/x/documentservice/type
 // Msg defines the Msg service.
 service Msg {
       rpc CreateContract(MsgCreateContract) returns (MsgCreateContractResponse);
+  rpc CreateAnnex(MsgCreateAnnex) returns (MsgCreateAnnexResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -18,6 +19,18 @@ message MsgCreateContract {
 }
 
 message MsgCreateContractResponse {
+  uint64 id = 1;
+  string createDate = 2;
+}
+
+message MsgCreateAnnex {
+  string creator = 1;
+  string annexHash = 2;
+  uint64 contractId = 3;
+  string buyer = 4;
+}
+
+message MsgCreateAnnexResponse {
   uint64 id = 1;
   string createDate = 2;
 }
