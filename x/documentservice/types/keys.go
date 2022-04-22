@@ -30,3 +30,8 @@ const (
 	AnnexKey      = "Annex-value-"
 	AnnexCountKey = "Annex-count-"
 )
+
+const (
+	ContractEventKey = "NewContractCreated"
+	ContractEventId  = "Id"
+)

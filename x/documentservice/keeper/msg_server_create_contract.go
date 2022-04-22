@@ -23,5 +23,13 @@ func (k msgServer) CreateContract(goCtx context.Context, msg *types.MsgCreateCon
 
 	id := k.AppendContract(ctx, contract)
 
+	ctx.EventManager().EmitEvent(
+		sdk.NewEvent(sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, "udrservice"),
+			sdk.NewAttribute(sdk.AttributeKeyAction, types.ContractEventKey),
+			sdk.NewAttribute(types.ContractEventId, strconv.FormatUint(id, 10)),
+		),
+	)
+
 	return &types.MsgCreateContractResponse{Id: id, CreateDate: contract.CreateDate}, nil
 }
