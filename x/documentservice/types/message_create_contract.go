@@ -9,11 +9,13 @@ const TypeMsgCreateContract = "create_contract"
 
 var _ sdk.Msg = &MsgCreateContract{}
 
-func NewMsgCreateContract(creator string, contractHash string, buyer string) *MsgCreateContract {
+func NewMsgCreateContract(creator string, contractHash string, buyer string, sellerInn string, buyerInn string) *MsgCreateContract {
 	return &MsgCreateContract{
 		Creator:      creator,
 		ContractHash: contractHash,
 		Buyer:        buyer,
+		SellerInn:    sellerInn,
+		BuyerInn:     buyerInn,
 	}
 }
 

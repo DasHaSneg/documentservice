@@ -8,6 +8,8 @@ export interface MsgCreateContract {
   creator: string;
   contractHash: string;
   buyer: string;
+  sellerInn: string;
+  buyerInn: string;
 }
 
 export interface MsgCreateContractResponse {
@@ -52,6 +54,8 @@ const baseMsgCreateContract: object = {
   creator: "",
   contractHash: "",
   buyer: "",
+  sellerInn: "",
+  buyerInn: "",
 };
 
 export const MsgCreateContract = {
@@ -64,6 +68,12 @@ export const MsgCreateContract = {
     }
     if (message.buyer !== "") {
       writer.uint32(26).string(message.buyer);
+    }
+    if (message.sellerInn !== "") {
+      writer.uint32(34).string(message.sellerInn);
+    }
+    if (message.buyerInn !== "") {
+      writer.uint32(42).string(message.buyerInn);
     }
     return writer;
   },
@@ -83,6 +93,12 @@ export const MsgCreateContract = {
           break;
         case 3:
           message.buyer = reader.string();
+          break;
+        case 4:
+          message.sellerInn = reader.string();
+          break;
+        case 5:
+          message.buyerInn = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -109,6 +125,16 @@ export const MsgCreateContract = {
     } else {
       message.buyer = "";
     }
+    if (object.sellerInn !== undefined && object.sellerInn !== null) {
+      message.sellerInn = String(object.sellerInn);
+    } else {
+      message.sellerInn = "";
+    }
+    if (object.buyerInn !== undefined && object.buyerInn !== null) {
+      message.buyerInn = String(object.buyerInn);
+    } else {
+      message.buyerInn = "";
+    }
     return message;
   },
 
@@ -118,6 +144,8 @@ export const MsgCreateContract = {
     message.contractHash !== undefined &&
       (obj.contractHash = message.contractHash);
     message.buyer !== undefined && (obj.buyer = message.buyer);
+    message.sellerInn !== undefined && (obj.sellerInn = message.sellerInn);
+    message.buyerInn !== undefined && (obj.buyerInn = message.buyerInn);
     return obj;
   },
 
@@ -137,6 +165,16 @@ export const MsgCreateContract = {
       message.buyer = object.buyer;
     } else {
       message.buyer = "";
+    }
+    if (object.sellerInn !== undefined && object.sellerInn !== null) {
+      message.sellerInn = object.sellerInn;
+    } else {
+      message.sellerInn = "";
+    }
+    if (object.buyerInn !== undefined && object.buyerInn !== null) {
+      message.buyerInn = object.buyerInn;
+    } else {
+      message.buyerInn = "";
     }
     return message;
   },

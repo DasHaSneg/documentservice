@@ -226,6 +226,10 @@ paths:
                       type: string
                     buyer:
                       type: string
+                    sellerInn:
+                      type: string
+                    buyerInn:
+                      type: string
                     createDate:
                       type: string
               pagination:
@@ -357,6 +361,10 @@ paths:
                   seller:
                     type: string
                   buyer:
+                    type: string
+                  sellerInn:
+                    type: string
+                  buyerInn:
                     type: string
                   createDate:
                     type: string
@@ -28135,6 +28143,10 @@ definitions:
         type: string
       buyer:
         type: string
+      sellerInn:
+        type: string
+      buyerInn:
+        type: string
       createDate:
         type: string
   cosmonaut.documentservice.documentservice.MsgCompleteContractResponse:
@@ -28234,6 +28246,10 @@ definitions:
               type: string
             buyer:
               type: string
+            sellerInn:
+              type: string
+            buyerInn:
+              type: string
             createDate:
               type: string
       pagination:
@@ -28303,6 +28319,10 @@ definitions:
           seller:
             type: string
           buyer:
+            type: string
+          sellerInn:
+            type: string
+          buyerInn:
             type: string
           createDate:
             type: string

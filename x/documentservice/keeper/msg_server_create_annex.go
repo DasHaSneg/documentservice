@@ -35,5 +35,15 @@ func (k msgServer) CreateAnnex(goCtx context.Context, msg *types.MsgCreateAnnex)
 
 	k.SetContract(ctx, contract)
 
+	ctx.EventManager().EmitEvent(
+		sdk.NewEvent(sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, "documentservice"),
+			sdk.NewAttribute(sdk.AttributeKeyAction, types.AnnexEventKey),
+			sdk.NewAttribute(types.AnnexEventId, strconv.FormatUint(id, 10)),
+			sdk.NewAttribute(types.AnnexEventAnnexState, annex.State),
+			sdk.NewAttribute(types.AnnexEventContractState, contract.State),
+		),
+	)
+
 	return &types.MsgCreateAnnexResponse{Id: id, CreateDate: annex.CreateDate}, nil
 }

@@ -11,6 +11,8 @@ export interface Contract {
   state: string;
   seller: string;
   buyer: string;
+  sellerInn: string;
+  buyerInn: string;
   createDate: string;
 }
 
@@ -21,6 +23,8 @@ const baseContract: object = {
   state: "",
   seller: "",
   buyer: "",
+  sellerInn: "",
+  buyerInn: "",
   createDate: "",
 };
 
@@ -44,8 +48,14 @@ export const Contract = {
     if (message.buyer !== "") {
       writer.uint32(50).string(message.buyer);
     }
+    if (message.sellerInn !== "") {
+      writer.uint32(58).string(message.sellerInn);
+    }
+    if (message.buyerInn !== "") {
+      writer.uint32(66).string(message.buyerInn);
+    }
     if (message.createDate !== "") {
-      writer.uint32(58).string(message.createDate);
+      writer.uint32(74).string(message.createDate);
     }
     return writer;
   },
@@ -76,6 +86,12 @@ export const Contract = {
           message.buyer = reader.string();
           break;
         case 7:
+          message.sellerInn = reader.string();
+          break;
+        case 8:
+          message.buyerInn = reader.string();
+          break;
+        case 9:
           message.createDate = reader.string();
           break;
         default:
@@ -118,6 +134,16 @@ export const Contract = {
     } else {
       message.buyer = "";
     }
+    if (object.sellerInn !== undefined && object.sellerInn !== null) {
+      message.sellerInn = String(object.sellerInn);
+    } else {
+      message.sellerInn = "";
+    }
+    if (object.buyerInn !== undefined && object.buyerInn !== null) {
+      message.buyerInn = String(object.buyerInn);
+    } else {
+      message.buyerInn = "";
+    }
     if (object.createDate !== undefined && object.createDate !== null) {
       message.createDate = String(object.createDate);
     } else {
@@ -135,6 +161,8 @@ export const Contract = {
     message.state !== undefined && (obj.state = message.state);
     message.seller !== undefined && (obj.seller = message.seller);
     message.buyer !== undefined && (obj.buyer = message.buyer);
+    message.sellerInn !== undefined && (obj.sellerInn = message.sellerInn);
+    message.buyerInn !== undefined && (obj.buyerInn = message.buyerInn);
     message.createDate !== undefined && (obj.createDate = message.createDate);
     return obj;
   },
@@ -170,6 +198,16 @@ export const Contract = {
       message.buyer = object.buyer;
     } else {
       message.buyer = "";
+    }
+    if (object.sellerInn !== undefined && object.sellerInn !== null) {
+      message.sellerInn = object.sellerInn;
+    } else {
+      message.sellerInn = "";
+    }
+    if (object.buyerInn !== undefined && object.buyerInn !== null) {
+      message.buyerInn = object.buyerInn;
+    } else {
+      message.buyerInn = "";
     }
     if (object.createDate !== undefined && object.createDate !== null) {
       message.createDate = object.createDate;

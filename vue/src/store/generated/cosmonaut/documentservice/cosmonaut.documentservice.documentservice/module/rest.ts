@@ -33,6 +33,8 @@ export interface DocumentserviceContract {
   state?: string;
   seller?: string;
   buyer?: string;
+  sellerInn?: string;
+  buyerInn?: string;
   createDate?: string;
 }
 
