@@ -93,6 +93,24 @@ func (k Keeper) GetAllAnnex(ctx sdk.Context) (list []types.Annex) {
 	return
 }
 
+// GetAllAnnex returns all annex
+func (k Keeper) GetAllAnnexByContractId(ctx sdk.Context, contractId uint64) (list []types.Annex) {
+	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.AnnexKey))
+	iterator := sdk.KVStorePrefixIterator(store, []byte{})
+
+	defer iterator.Close()
+
+	for ; iterator.Valid(); iterator.Next() {
+		var val types.Annex
+		k.cdc.MustUnmarshal(iterator.Value(), &val)
+		if val.ContractId == contractId {
+			list = append(list, val)
+		}
+	}
+
+	return
+}
+
 // GetAnnexIDBytes returns the byte representation of the ID
 func GetAnnexIDBytes(id uint64) []byte {
 	bz := make([]byte, 8)

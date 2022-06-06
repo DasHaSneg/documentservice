@@ -42,6 +42,7 @@ func (k msgServer) CreateAnnex(goCtx context.Context, msg *types.MsgCreateAnnex)
 			sdk.NewAttribute(types.AnnexEventId, strconv.FormatUint(id, 10)),
 			sdk.NewAttribute(types.AnnexEventAnnexState, annex.State),
 			sdk.NewAttribute(types.AnnexEventContractState, contract.State),
+			sdk.NewAttribute(types.AnnexEventCreateDate, annex.CreateDate),
 		),
 	)
 

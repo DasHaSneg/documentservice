@@ -12,4 +12,5 @@ var (
 	ErrID     = sdkerrors.Register(ModuleName, 1200, "")
 	ErrBuyer  = sdkerrors.Register(ModuleName, 1300, "")
 	ErrState  = sdkerrors.Register(ModuleName, 1400, "")
+	ErrAccess = sdkerrors.Register(ModuleName, 1500, "")
 )

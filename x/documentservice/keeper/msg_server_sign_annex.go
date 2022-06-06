@@ -38,5 +38,13 @@ func (k msgServer) SignAnnex(goCtx context.Context, msg *types.MsgSignAnnex) (*t
 
 	k.SetContract(ctx, contract)
 
+	ctx.EventManager().EmitEvent(
+		sdk.NewEvent(sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, "documentservice"),
+			sdk.NewAttribute(sdk.AttributeKeyAction, types.SignAnnexEventKey),
+			sdk.NewAttribute(types.SignAnnexState, annex.State),
+		),
+	)
+
 	return &types.MsgSignAnnexResponse{}, nil
 }

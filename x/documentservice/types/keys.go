@@ -32,12 +32,22 @@ const (
 )
 
 const (
-	ContractEventKey   = "NewContractCreated"
-	ContractEventId    = "Id"
-	ContractEventState = "State"
+	ContractEventKey        = "NewContractCreated"
+	ContractEventId         = "Id"
+	ContractEventState      = "State"
+	ContractEventCreateDate = "CreateDate"
 
 	AnnexEventKey           = "NewAnnexCreated"
 	AnnexEventId            = "Id"
 	AnnexEventContractState = "ContractState"
 	AnnexEventAnnexState    = "AnnexState"
+	AnnexEventCreateDate    = "CreateDate"
+
+	SignAnnexEventKey = "SignAnnex"
+	SignAnnexState    = "State"
+
+	SignContractEventKey = "SignContract"
+	SignConatractState   = "State"
+
+	CompleteContractEventKey = "Contract completed"
 )

@@ -31,6 +31,7 @@ func (k msgServer) CreateContract(goCtx context.Context, msg *types.MsgCreateCon
 			sdk.NewAttribute(sdk.AttributeKeyAction, types.ContractEventKey),
 			sdk.NewAttribute(types.ContractEventId, strconv.FormatUint(id, 10)),
 			sdk.NewAttribute(types.ContractEventState, contract.State),
+			sdk.NewAttribute(types.ContractEventCreateDate, contract.CreateDate),
 		),
 	)
 

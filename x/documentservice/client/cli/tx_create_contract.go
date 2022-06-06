@@ -16,7 +16,7 @@ func CmdCreateContract() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "create-contract [contract-hash] [buyer] [seller_inn] [buyer_inn]",
 		Short: "Broadcast message create-contract",
-		Args:  cobra.ExactArgs(2),
+		Args:  cobra.ExactArgs(4),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			argContractHash := args[0]
 			argBuyer := args[1]

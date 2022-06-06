@@ -29,5 +29,13 @@ func (k msgServer) SignContract(goCtx context.Context, msg *types.MsgSignContrac
 
 	k.SetContract(ctx, contract)
 
+	ctx.EventManager().EmitEvent(
+		sdk.NewEvent(sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, "documentservice"),
+			sdk.NewAttribute(sdk.AttributeKeyAction, types.SignContractEventKey),
+			sdk.NewAttribute(types.SignConatractState, contract.State),
+		),
+	)
+
 	return &types.MsgSignContractResponse{}, nil
 }
