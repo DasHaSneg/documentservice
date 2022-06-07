@@ -1,0 +1,71 @@
+version: "3"
+
+services:
+  node0:
+    container_name: node0
+    build: .
+    # image: "cosmossdk/simd"
+    environment:
+      - DEBUG=1
+      - ID=0
+      - LOG=${LOG:-dosumentserviced.log}
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "26656-26657:26656-26657"
+      - "1317:1317"
+      - "9090:9090"
+      - "2345:2345"
+    volumes:
+      - ./nodecluster/node0:/home/container/.documentservice
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.2
+
+  node1:
+    container_name: node1
+    build: .
+    # image: "cosmossdk/simd"
+    environment:
+      - DEBUG=1
+      - ID=1
+      - LOG=${LOG:-dosumentserviced.log}
+    ports:
+      - "26666-26667:26656-26657"
+      - "1318:1317"
+      - "9091:9090"
+      - "2346:2345"
+    volumes:
+      - ./nodecluster/node1:/home/container/.documentservice
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.3
+  
+  node2:
+    container_name: node2
+    build: .
+    # image: "cosmossdk/simd"
+    environment:
+      - DEBUG=1
+      - ID=2
+      - LOG=${LOG:-dosumentserviced.log}
+    ports:
+      - "26686-26687:26656-26657"
+      - "1320:1317"
+      - "9093:9090"
+      - "2348:2345"
+    volumes:
+      - ./nodecluster/node2:/home/container/.documentservice
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.4
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.10.0/25
