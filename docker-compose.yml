@@ -3,8 +3,7 @@ version: "3"
 services:
   node0:
     container_name: node0
-    build: .
-    # image: "cosmossdk/simd"
+    image: "hide101/documentservice_node"
     environment:
       - DEBUG=1
       - ID=0
@@ -26,8 +25,7 @@ services:
 
   node1:
     container_name: node1
-    build: .
-    # image: "cosmossdk/simd"
+    image: "hide101/documentservice_node"
     environment:
       - DEBUG=1
       - ID=1
@@ -45,8 +43,7 @@ services:
   
   node2:
     container_name: node2
-    build: .
-    # image: "cosmossdk/simd"
+    image: "hide101/documentservice_node"
     environment:
       - DEBUG=1
       - ID=2
