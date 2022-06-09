@@ -11,7 +11,7 @@ WORKDIR /documentservice
 COPY . .
 
 # install
-RUN make build-linux
+RUN make build
 
 # Final image
 FROM alpine:edge
