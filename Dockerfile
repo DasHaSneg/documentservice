@@ -21,13 +21,13 @@ RUN apk update && apk add bash
 # Copy over binaries from the build-env
 COPY --from=build-env /documentservice/build/documentserviced /usr/bin/documentserviced
 
-RUN adduser container --disabled-password && mkdir -p /home/container/.documentservice
+RUN adduser container --disabled-password && mkdir -p /home/container/.documentservice && mkdir /home/container/build
 
 EXPOSE 26656 26657 1317 9090
 
 COPY ./startup.sh /usr/local/bin/
 
-COPY ./build/documentserviced /home/container/build
+COPY ./build/documentserviced /home/container/build/
 
 RUN chmod +x /usr/local/bin/startup.sh
 
