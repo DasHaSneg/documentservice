@@ -3,7 +3,7 @@ CHAIN_ID=test
 
 if [ -f ~/.documentservice/config/genesis.json ]; then
     echo "run node"
-    /home/container/build/documentserviced start --home ~/.documentservice
+    /home/container/documentserviced start --home ~/.documentservice
 else
 	echo "Config empty"
 fi
