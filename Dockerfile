@@ -11,7 +11,7 @@ WORKDIR /documentservice
 COPY . .
 
 # install
-RUN make build
+RUN make build-linux
 
 # Final image
 FROM alpine:edge
@@ -19,7 +19,7 @@ FROM alpine:edge
 RUN apk update && apk add bash
 
 # Copy over binaries from the build-env
-COPY --from=build-env /documentservice/build/documentserviced /usr/local/bin/documentserviced
+COPY --from=build-env /documentservice/build/documentserviced /usr/bin/documentserviced
 
 RUN adduser container --disabled-password && mkdir -p /home/container/.documentservice
 
