@@ -62,6 +62,51 @@ services:
       localnet:
         ipv4_address: 192.168.10.4
 
+  server:
+    image: "hide101/documentservice_server"
+    depends_on:
+      - postgre
+    restart: unless-stopped
+    ports:
+    - '5000:5000'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 100m
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.10
+
+  postgre:
+    image: postgres:14.3
+    environment:
+      POSTGRES_DB: "document_service"
+      POSTGRES_USER: "db_admin"
+      POSTGRES_PASSWORD: "123456"
+      PGDATA: "/var/lib/pgsql/data"
+    volumes:
+      - ../2. Init Database:/docker-entrypoint-initdb.d
+      - .:/var/lib/postgresql/data
+    ports:
+      - "25432:5432"
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.11
+  
+  client:
+    image: "hide101/documentservice_client"
+    restart: unless-stopped
+    ports:
+    - '3000:3000'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 100m
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.12
+  
+
 networks:
   localnet:
     driver: bridge

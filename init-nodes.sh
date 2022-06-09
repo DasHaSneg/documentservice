@@ -12,6 +12,10 @@ do
     $BINARY keys add "validator${i}" --keyring-backend test --home "./nodecluster/node${i}"  --keyring-dir "./nodecluster"
 done
 
+$BINARY keys add "test" --keyring-backend test --home "./nodecluster/node0"  --keyring-dir "./nodecluster"
+VADDRESS=$($BINARY keys show test -a --keyring-backend test --keyring-dir "./nodecluster")
+$BINARY add-genesis-account $VADDRESS 100000000000stake --home "./nodecluster/node0"
+
 for (( i=0; i<$NODES_NUM; i++))
 do
     for (( j=0; j<$NODES_NUM; j++))
