@@ -4,7 +4,7 @@ services:
   node0:
     container_name: node0
     build: .
-    image: "cosmossdk/simd"
+    #image: "cosmossdk/simd"
     environment:
       - DEBUG=1
       - ID=0
