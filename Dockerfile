@@ -27,8 +27,6 @@ EXPOSE 26656 26657 1317 9090
 
 COPY ./startup.sh /usr/local/bin/
 
-COPY ./build/documentserviced /home/container/
-
 RUN chmod +x /usr/local/bin/startup.sh
 
 USER container:container
